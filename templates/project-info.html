@@ -4,8 +4,24 @@
 	<title>Project Information</title>
 </head>
 <body>
-  <h2>{{ title }}</h2><br>
-  <p>{{ description }}<br>
+  <h1>{{ title }}</h1>
+  <p>{{ description }}<br><br>
   Max grade: {{ max_grade }}</p>
+
+  	<h3>Students and their grades</h3>
+	<table width="20%">
+	  <tr>
+	    <th>Name</th>
+	    <th>Grade</th>
+	  </tr>
+	  {% for grade in ng %}
+	  <tr>
+	    <td><a href="/student?github={{ grade[0] }}">{{ grade[1] }} {{ grade[2] }}</a></td>
+	    <td>{{ grade[3] }}</td>
+	  </tr>
+	  {% endfor %}
+	</table>
+	
+
 </body>
 </html>

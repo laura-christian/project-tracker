@@ -155,6 +155,22 @@ def get_grades_by_title(title):
 
     return rows
 
+def get_names_and_grades_by_title(title):
+    """Get a list of tuples containing first name, last name, and grade data for
+    a specific project."""
+
+    QUERY = """
+            SELECT s.github, s.first_name, s.last_name, g.grade
+            FROM students as s
+            INNER JOIN grades as g ON s.github = g.student_github
+            WHERE g.project_title = :title
+            """
+
+    db_cursor = db.session.execute(QUERY, {'title': title})
+
+    rows = db_cursor.fetchall()
+
+    return rows
 
 def handle_input():
     """Main loop.

@@ -45,7 +45,12 @@ def project_details(title):
 
     title, description, max_grade = hackbright.get_project_by_title(title)
 
-    return render_template('project-info.html', title=title, description=description, max_grade=max_grade)
+    names_and_grades = hackbright.get_names_and_grades_by_title(title)
+
+    print names_and_grades
+
+    return render_template('project-info.html', title=title, description=description, max_grade=max_grade,
+                            ng=names_and_grades)
 
 
 
@@ -54,6 +59,8 @@ def add_student():
     """Add a student."""
 
     return render_template("add-student.html")
+
+# [(u'jhacks', u'Jane', u'Hacker', 2), (u'sdevelops', u'Sarah', u'Developer', 100)]
 
 
 @app.route("/add-student", methods=['POST'])
