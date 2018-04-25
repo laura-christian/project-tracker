@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>Student Info</title>
+</head>
+<body>
+  <h1>{{ first }} {{ last }}</h1>
+
+  <p>GitHub Account: {{ github }}</p>
+
+  {% if student_info %}
+
+  Grades:
+  {% for info in student_info %}
+  <li><a href="/project/{{ info[0] }}">{{ info[0] }}</a>: {{ info[1] }}</li>
+  {% endfor %}
+  
+  {% else %}
+
+  <h4>No grades to show.</h4>
+
+  {% endif %}
+
+</body>
+</html>
